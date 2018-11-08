@@ -1,4 +1,4 @@
-import { Component, Output, Input, OnInit, EventEmitter } from '@angular/core';
+import { Component, Output, Input, OnInit, EventEmitter, SimpleChange } from '@angular/core';
 import { CountryCode } from './resource/country-code';
 import { Country } from './model/country.model';
 import * as _ from 'google-libphonenumber';
@@ -37,6 +37,12 @@ export class NgxIntlTelInputComponent implements OnInit {
       this.selectedCountry = this.preferredCountriesInDropDown[0];
     } else {
       this.selectedCountry = this.allCountries[0];
+    }
+  }
+
+  ngOnChanges(change: SimpleChange) {
+    if (change.currentValue.length === 0) {
+      this.phone_number = ""
     }
   }
 

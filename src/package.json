@@ -1,21 +1,18 @@
 {
   "name": "ngx-intl-tel-input",
-  "version": "1.0.6",
+  "version": "0.0.1-fk",
   "repository": {
     "type": "git",
     "url": "https://github.com/webcat12345/ngx-intl-tel-input"
   },
   "author": {
-    "name": "webcat12345",
-    "email": "webcat91@gmail.com"
+    "name": "Subash Chandran",
+    "email": "subash.chandran@fourkites.com"
   },
   "keywords": [
     "angular"
   ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/webcat12345/ngx-intl-tel-input/issues"
-  },
   "module": "ngx-intl-tel-input.js",
   "typings": "ngx-intl-tel-input.d.ts",
   "peerDependencies": {
