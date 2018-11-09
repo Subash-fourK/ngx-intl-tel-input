@@ -40,8 +40,8 @@ export class NgxIntlTelInputComponent implements OnInit {
     }
   }
 
-  ngOnChanges(change: SimpleChange) {
-    if (change.currentValue.length === 0) {
+  ngOnChanges(change: any) {
+    if (change.value.currentValue.length === 0) {
       this.phone_number = ""
     }
   }
