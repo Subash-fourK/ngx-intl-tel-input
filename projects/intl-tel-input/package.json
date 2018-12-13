@@ -1,0 +1,15 @@
+{
+  "name": "@fourkites/ngx-intl-tel-input",
+  "version": "0.0.2",
+  "peerDependencies": {
+    "@angular/core" : "6.1.8",
+    "@angular/common": "^6.1.8"
+  },
+  "author": {
+    "name": "Subash Chandran",
+    "email": "subash.chandran@fourkites.com"
+  },
+  "publishConfig": {
+    "registry": "http://npm.fourkites.com"
+  }
+}
