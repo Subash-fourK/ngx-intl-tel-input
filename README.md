@@ -1,115 +1,63 @@
 # International Telephone Input
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/webcat12345/ngx-intl-tel-input.svg)](https://greenkeeper.io/)
-[![Build Status](https://travis-ci.org/webcat12345/ngx-intl-tel-input.svg?branch=master)](https://travis-ci.org/webcat12345/ngx-intl-tel-input) [![npm version](https://badge.fury.io/js/ngx-intl-tel-input.svg)](https://badge.fury.io/js/ngx-intl-tel-input) [![npm](https://img.shields.io/npm/dm/localeval.svg)](https://www.npmjs.com/package/ngx-intl-tel-input)
-[![Throughput Graph](https://graphs.waffle.io/webcat12345/ngx-intl-tel-input/throughput.svg)](https://waffle.io/webcat12345/ngx-intl-tel-input/metrics)
+This package is based on [https://github.com/webcat12345/ngx-intl-tel-input](https://github.com/webcat12345/ngx-intl-tel-input). But since it's no longer maintained I decided to update it to work with Angular 7. Also phone number validation is working now and there is support for the (Reactive)FormsModule.
 
-
-An Angular package for entering and validating international telephone numbers. It adds a flag dropdown to any input, detects the user's country, displays a relevant placeholder and provides formatting/validation methods.
-
-![alt](ngx-intl-tel-input.jpg)
-
-## Documentation
-
-https://webcat12345.github.io/ngx-intl-tel-input/overview.html
-
-## Pull requests are welcome!!!
-
-#### Merged pull requests
-https://github.com/webcat12345/ngx-intl-tel-input/pull/3
+![alt](screenshot.png)
 
 ## Installation
 
-To install this library, run:
-
+1. Install [ngx-bootstrap](https://valor-software.com/ngx-bootstrap/#/)
 ```bash
-$ npm install ngx-intl-tel-input --save
+$ ng add ngx-bootstrap
 ```
 
-This library depends on `BsDropdownModule` from `ngx-bootstrap/dropdown`.
-To install this library, run:
+2. Install [intl-tel-input](https://github.com/jackocnr/intl-tel-input)
 ```bash
-$ npm install ngx-bootstrap --save
+$ npm install intl-tel-input --save
 ```
-Then import `BsDropdownModule` at `AppModule`. (more details see : http://valor-software.com/ngx-bootstrap/#/dropdowns)
 
+3. Add intl-tel-input css to angular.json
+Look for the `styles` array in your angular.json and add `./node_modules/intl-tel-input/build/css/intlTelInput.css`. It should look like this after adding it:
 ```typescript
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-
-@NgModule({
+"styles": [
   ...
-  imports: [
-      ...
-    BsDropdownModule.forRoot()
-      ...
-  ],
+  "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+  "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+  "./node_modules/intl-tel-input/build/css/intlTelInput.css",
+  "src/styles.css"
   ...
-})
-export class AppModule { }
+],
+```
+4. Install [google-libphonenumber](https://github.com/ruimarinho/google-libphonenumber)
+```bash
+$ npm install google-libphonenumber --save
 ```
 
-## Consuming library
-
-Injecting StyleSheet
-
-Inside `angular-cli.json`
-```json
- "styles": [
-       
-        "../node_modules/ngx-intl-tel-input/resource/intl-tel-input.css"
-      ],
+5. Install this library
+```bash
+$ npm install angular-intl-tel-input --save
 ```
 
-
-From your Angular `AppModule`:
-
+6. Add BsDropDownModule and IntlTelInputModule to your angular module file
 ```typescript
-// Import your library
-import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
-
-@NgModule({
-  ...
-  imports: [
-      ...
-    NgxIntlTelInputModule
-      ...
-  ],
-  ...
-})
-export class AppModule { }
+imports: [
+    ...
+    BsDropdownModule.forRoot(),
+    IntlTelInputModule,
+    ...
+  ]
 ```
 
-Once library is imported, you can use components in your Angular application:
+## Example usage
+```html
+<div class="container">
+  <form #form="ngForm">
+    <intl-tel-input [preferredCountries]="['nl', 'gb', 'de', 'be']" [enablePlaceholder]="true" name="phoneNumber" ngModel></intl-tel-input>
+  </form>
 
-```xml
-<!-- You can now use your library component in app.component.html -->
-<h1>
-  {{phone_number}}
-</h1>
-<ngx-intl-tel-input [(value)]="phone_number"></ngx-intl-tel-input>
+  <pre>{{ form.value | json }}</pre>
+</div>
 ```
 
-### Parameters
-
-| Input | Description |
-| ------ | ------ |
-| value | Phone number |
-| preferredCountries | https://github.com/webcat12345/ngx-intl-tel-input/pull/3 |
-
-## Development
-
-To generate all `*.js`, `*.d.ts` and `*.metadata.json` files:
-
-```bash
-$ npm run build
-```
-
-To lint all `*.ts` files:
-
-```bash
-$ npm run lint
-```
-
-## License
-
-MIT © [webcat12345](mailto:webcat91@gmail.com)
+### Live example (Flags are not working in the live example for some reason)
+https://stackblitz.com/edit/angular-opecoe
